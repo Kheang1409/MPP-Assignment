@@ -9,7 +9,7 @@ participant Order as Order
 participant Paycheck as Paycheck 
 
 [o->Main : main(String[] args)
-
+activate Main
 Main->Commissioned : Commissioned(String empId, double commission, double baseSalary): Commissioned e
 activate Commissioned
  Commissioned -> Employee : super(empId)
@@ -47,6 +47,6 @@ Paycheck -> Paycheck : getNetPay
 deactivate Paycheck
 
 Paycheck --> Main: return String
-
+deactivate Main
 
 @enduml
