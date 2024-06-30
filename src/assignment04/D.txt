@@ -1,0 +1,52 @@
+@startuml
+autonumber
+
+participant Main as Main
+participant Commissioned as Commissioned
+participant Employee as Employee 
+participant LocalDate as LocalDate
+participant Order as Order
+participant Paycheck as Paycheck 
+
+[o->Main : main(String[] args)
+
+Main->Commissioned : Commissioned(String empId, double commission, double baseSalary): Commissioned e
+activate Commissioned
+ Commissioned -> Employee : super(empId)
+deactivate Commissioned
+
+Main->Commissioned : addNewOrder(1, LocalDate.of(2021, 9, 1), 100)
+activate Commissioned 
+
+Main->LocalDate : LocalDate.of(int year, int month, int dayOfMonth)
+activate LocalDate
+deactivate LocalDate
+
+Commissioned -> Order : Order(int orderNo, LocalDate orderDate, double orderAmount)
+activate Order
+deactivate Order
+deactivate Commissioned 
+
+Main -> Commissioned : calcCompensation(int month, int year)
+activate Commissioned 
+Commissioned -> Employee : calcCompensation(int month, int year)
+activate Employee 
+
+Employee -> Paycheck: Paycheck(double grossPay) : Paycheck p
+activate Paycheck
+deactivate Paycheck
+
+deactivate Employee 
+
+deactivate Commissioned 
+
+Main -> Paycheck : toString()
+activate Paycheck 
+
+Paycheck -> Paycheck : getNetPay
+deactivate Paycheck
+
+Paycheck --> Main: return String
+
+
+@enduml

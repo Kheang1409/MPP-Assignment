@@ -1,0 +1,62 @@
+@startuml
+
+autonumber
+
+participant CheckoutForm as CheckoutForm
+
+participant CheckoutController as CheckoutController
+
+participant CheckoutRecord as CheckoutRecord
+
+participant LibraryMember as LibraryMember
+
+participant LibraryDBSubSystem as LibraryDBSubSystem
+
+
+[o-> CheckoutForm : checkoutBook()
+activate CheckoutForm
+
+CheckoutForm -> CheckoutController : checkoutBook(m_book, m_member)
+activate CheckoutController
+
+CheckoutController -> CheckoutRecord : CheckoutRecord(): aCheckoutBook
+activate CheckoutRecord
+deactivate CheckoutRecord
+
+CheckoutController -> LibraryMember : getCheckoutPeriod()
+activate LibraryMember
+deactivate LibraryMember
+
+CheckoutController -> CheckoutRecord : setDueDate(member.getCheckoutPeriod())
+activate CheckoutRecord
+deactivate CheckoutRecord
+
+CheckoutController -> CheckoutRecord : addBook(book)
+activate CheckoutRecord
+deactivate CheckoutRecord
+
+CheckoutController -> LibraryMember : addCheckoutRecord()
+activate LibraryMember
+deactivate LibraryMember
+
+CheckoutController -> LibraryMember : getMemberID()
+activate LibraryMember
+deactivate LibraryMember
+
+CheckoutController -> LibraryDBSubSystem: addCheckoutRecord(member.getMemberID(), aCheckoutRecord)
+activate LibraryDBSubSystem
+deactivate LibraryDBSubSystem
+
+CheckoutController -> CheckoutController : displayCheckoutInf()
+activate CheckoutController
+deactivate CheckoutController
+
+CheckoutController -> CheckoutController : clearChecoutFields()
+activate CheckoutController
+deactivate CheckoutController
+
+deactivate CheckoutController
+
+deactivate CheckoutForm
+
+@enduml

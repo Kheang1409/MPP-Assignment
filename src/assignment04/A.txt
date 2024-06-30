@@ -1,0 +1,37 @@
+@startuml
+autonumber
+
+participant "anOrder:Order" as Order
+participant "anOrderLine:OrderLine" as OrderLine
+participant "aProduct: Product" as Product
+participant "aCustomer: Customer" as Customer
+
+[o-> Order : :calculatePrice
+
+activate Order
+Order -> OrderLine : :~*calculatePrice
+
+activate OrderLine
+OrderLine -> Product: : getPrice(quantity:number)
+
+activate Product
+deactivate Product
+
+deactivate OrderLine
+
+
+Order -> Customer : :getDiscountedValue(an Order)
+activate Customer
+
+Customer -> Order : :getBaseValue
+
+activate Order
+deactivate Order
+
+
+Customer --> Order : :discountedValue
+deactivate Customer
+deactivate Order
+
+
+@enduml
