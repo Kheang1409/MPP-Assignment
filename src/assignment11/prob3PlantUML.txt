@@ -1,0 +1,11 @@
+@startuml
+Object <|-- "List<Object>"
+"List<Object>" <|-- "List<?>"
+"List<?>" <|-- "List<? super Number>"
+"List<?>" <|-- "List<? extends Number>"
+"List<? super Number>" <|-- "List<? super Integer>"
+"List<? super Integer>" <|-- "List<Number>"
+"List<Number>" <|-- "List<? extends Number>"
+"List<? extends Number>" <|-- "List<Integer>"
+"List<Integer>" <|-- "List<? extends Integer>"
+@enduml

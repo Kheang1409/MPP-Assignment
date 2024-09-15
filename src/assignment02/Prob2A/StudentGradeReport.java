@@ -1,4 +1,4 @@
-package Prob2A;
+package assignment02.Prob2A;
 
 public class StudentGradeReport {
     public static Student createStudent(String name){

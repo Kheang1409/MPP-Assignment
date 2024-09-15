@@ -1,4 +1,4 @@
-package Prob2A;
+package assignment02.Prob2A;
 
 public class Main {
     public static void main(String[] args) {

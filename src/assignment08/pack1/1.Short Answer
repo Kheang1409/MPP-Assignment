@@ -1,0 +1,7 @@
+a. For each lambda expression below, name the parameters and the free variables.
+- parameters:
+- free parameters: s, t,
+ii.
+- parameters: s, t
+- free parameters: ignoreCase
+b.

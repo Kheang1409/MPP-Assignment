@@ -1,4 +1,4 @@
-package Prob2B;
+package assignment02.Prob2B;
 
 public class OrderLine {
     private Order order;

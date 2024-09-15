@@ -1,4 +1,4 @@
-package Prob2A;
+package assignment02.Prob2A;
 
 import static java.lang.StringTemplate.STR;
 
